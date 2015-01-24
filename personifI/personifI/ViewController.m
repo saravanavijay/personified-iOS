@@ -13,6 +13,12 @@
 #import "AFNetworking.h"
 #import <Parse/Parse.h>
 #import "Utilities.h"
+#import "AppDelegate.h"
+#import "InterestsViewController.h"
+#import "FeedViewController.h"
+#import "LeftMenuViewController.h"
+#import "ECSlidingViewController.h"
+
 
 @interface ViewController ()
 
@@ -25,10 +31,12 @@
     // Do any additional setup after loading the view, typically from a nib.
     
     
-    [PFUser logOut];
+//    [PFUser logOut];
     
 //    
 }
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -42,11 +50,14 @@
      {
          if (user != nil)
          {
-             if (user[PF_USER_FACEBOOKID] == nil)
+           //  if (user[PF_USER_FACEBOOKID] == nil)
              {
                  [self requestFacebook:user];
              }
-            // else [self userLoggedIn:user];
+//             else {
+//    
+//                 
+//             }
          }
          
      }];
@@ -124,21 +135,27 @@
                                             
                                             
                                             if (error==nil) {
-                                                NSDictionary* params = [NSDictionary dictionaryWithObjectsAndKeys:result[@"data"], @"user_friends",[PFUser currentUser].objectId,@"user_id", nil];
                                                 [PFCloud callFunctionInBackground:@"updateFriends"
-                                                                   withParameters:@{@"params": params}
+                                                                   withParameters:[NSDictionary dictionaryWithObjectsAndKeys:result[@"data"], @"user_friends",[PFUser currentUser].objectId,@"user_id", nil]
                                                                             block:^(id results, NSError *error) {
                                                                                 if (!error) {
                                                                                     // this is where you handle the results and change the UI.
                                                                                     NSLog(@"results = %@",result);
                                                                                     
                                                                                     //Go inside App
+                                                                                    
+                                                                                    
+                                                                                    [self loginSuccess];
+                                                                                    
                                                                                 }
                                                                             }];
                                             }
                                             
                                             
                                         }];
+                  
+                  
+             //     [self userLoggedIn:user];
               }
               else
               {
@@ -154,4 +171,16 @@
     //---------------------------------------------------------------------------------------------------------------------------------------------
     [[NSOperationQueue mainQueue] addOperation:operation];
 }
+-(void)loginSuccess{
+   
+    PFInstallation *currentInstallation = [PFInstallation currentInstallation];
+    [currentInstallation setObject:[PFUser currentUser] forKey:@"owner"];
+    [currentInstallation saveInBackground];
+    
+    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+    InterestsViewController *IVVC = [storyBoard instantiateViewControllerWithIdentifier:@"InterestsViewController"];
+    
+    [self.navigationController pushViewController:IVVC animated:YES];
+}
+
 @end

@@ -9,6 +9,11 @@
 #import "AppDelegate.h"
 #import <Parse/Parse.h>
 #import <ParseFacebookUtils/PFFacebookUtils.h>
+#import "InterestsViewController.h"
+#import "FeedViewController.h"
+#import "LeftMenuViewController.h"
+#import "ECSlidingViewController.h"
+
 
 @interface AppDelegate ()
 
@@ -20,8 +25,6 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
-    //[Parse enableLocalDatastore];
-    
     // Initialize Parse.
     [Parse setApplicationId:@"BOLopgLNbnrfZbLIbj7JBwZpn4NRpmgOszlYmKlN"
                   clientKey:@"bgCVEOsPcdV5fr8GNFwwnInxXn92Z7Bc1Ul5VV65"];
@@ -32,6 +35,43 @@
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     
     
+//    UIUserNotificationType userNotificationTypes = (UIUserNotificationTypeAlert |
+//                                                    UIUserNotificationTypeBadge |
+//                                                    UIUserNotificationTypeSound);
+//    UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:userNotificationTypes
+//                                                                             categories:nil];
+//    [application registerUserNotificationSettings:settings];
+//    [application registerForRemoteNotifications];
+    
+  
+    if ([application respondsToSelector:@selector(isRegisteredForRemoteNotifications)])
+    {
+        // iOS 8 Notifications
+        [application registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge) categories:nil]];
+        
+        [application registerForRemoteNotifications];
+    }
+    else
+    {
+        // iOS < 8 Notifications
+        [application registerForRemoteNotificationTypes:
+         (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeSound)];
+    }
+    
+    
+    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+    UINavigationController *feedNavVC = (UINavigationController*)[sb instantiateViewControllerWithIdentifier:@"FeedNav"];
+    
+    LeftMenuViewController *leftView = [sb instantiateViewControllerWithIdentifier:@"LeftMenuNavVC"];
+    ECSlidingViewController *slidingViewController = [[ECSlidingViewController alloc] init];
+    slidingViewController.topViewController = feedNavVC;
+    slidingViewController.underLeftViewController =leftView;
+    
+    self.window = [[UIWindow alloc] initWithFrame:UIScreen.mainScreen.bounds];
+    
+    self.window.rootViewController = slidingViewController;
+    [self.window makeKeyAndVisible];
+    // [self dismissViewControllerAnimated:YES completion:nil];
     
     return YES;
 }
@@ -64,6 +104,21 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     [FBAppCall handleDidBecomeActiveWithSession:[PFFacebookUtils session]];
+}
+- (void)application:(UIApplication *)application
+didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    // Store the deviceToken in the current Installation and save it to Parse.
+    PFInstallation *currentInstallation = [PFInstallation currentInstallation];
+    [currentInstallation setDeviceTokenFromData:deviceToken];
+   //  currentInstallation.channels = @[ @"global" ];
+    [currentInstallation saveInBackground];
+}
+- (void)application:(UIApplication*)application didFailToRegisterForRemoteNotificationsWithError:(NSError*)error
+{
+    NSLog(@"Failed to get token, error: %@", error);
+}
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+    [PFPush handlePush:userInfo];
 }
 
 @end
