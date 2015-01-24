@@ -12,6 +12,7 @@
 #import "AppConstant.h"
 #import "AFNetworking.h"
 #import <Parse/Parse.h>
+#import "AppDelegate.h"
 
 
 @interface ViewController ()
@@ -130,6 +131,12 @@
           {
               if (error == nil)
               {
+                  PFInstallation *currentInstallation = [PFInstallation currentInstallation];
+                  [currentInstallation setObject:[PFUser currentUser] forKey:@"owner"];
+                  [currentInstallation saveInBackground];
+                  
+                  
+                  
              //     [self userLoggedIn:user];
               }
               else
