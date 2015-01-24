@@ -12,8 +12,12 @@
 #import "AppConstant.h"
 #import "AFNetworking.h"
 #import <Parse/Parse.h>
+#import "Utilities.h"
 #import "AppDelegate.h"
 #import "InterestsViewController.h"
+#import "FeedViewController.h"
+#import "LeftMenuViewController.h"
+#import "ECSlidingViewController.h"
 
 
 @interface ViewController ()
@@ -27,49 +31,33 @@
     // Do any additional setup after loading the view, typically from a nib.
     
     
-    
-    
-    
-   
+//    [PFUser logOut];
     
 //    
 }
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-//- (IBAction)LoginButtonAction:(id)sender {
-//    
-//    
-//    [PFFacebookUtils logInWithPermissions:[NSArray arrayWithObjects: @"public_profile", @"email",@"user_likes", nil] block:^(PFUser *user, NSError *error) {
-//        if (!user) {
-//            NSLog(@"Uh oh. The user cancelled the Facebook login.");
-//        } else if (user.isNew) {
-//            NSLog(@"User signed up and logged in through Facebook!");
-//        } else {
-//            NSLog(@"User logged in through Facebook!");
-//        }
-//    }];
-//  
-//}
 - (IBAction)LoginButtonAction:(id)sender
 //-------------------------------------------------------------------------------------------------------------------------------------------------
 {
     
-    [PFFacebookUtils logInWithPermissions:@[@"public_profile", @"email", @"user_friends"] block:^(PFUser *user, NSError *error)
+    [PFFacebookUtils logInWithPermissions:@[@"public_profile", @"email", @"user_friends",@"user_likes"] block:^(PFUser *user, NSError *error)
      {
          if (user != nil)
          {
-             if (user[PF_USER_FACEBOOKID] == nil)
+           //  if (user[PF_USER_FACEBOOKID] == nil)
              {
                  [self requestFacebook:user];
              }
-             else {
-                 [self loginSuccess];
-                 
-             }
+//             else {
+//    
+//                 
+//             }
          }
          
      }];
@@ -90,7 +78,6 @@
          else
          {
              [PFUser logOut];
-             
          }
      }];
 }
@@ -109,7 +96,7 @@
      {
          UIImage *image = (UIImage *)responseObject;
          //-----------------------------------------------------------------------------------------------------------------------------------------
-        // if (image.size.width > 140) image = ResizeImage(image, 140, 140);
+         if (image.size.width > 140) image = ResizeImage(image, 140, 140);
          //-----------------------------------------------------------------------------------------------------------------------------------------
          PFFile *filePicture = [PFFile fileWithName:@"picture.jpg" data:UIImageJPEGRepresentation(image, 0.6)];
          [filePicture saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
@@ -117,7 +104,7 @@
           //    if (error != nil) [ProgressHUD showError:error.userInfo[@"error"]];
           }];
          //-----------------------------------------------------------------------------------------------------------------------------------------
-       //  if (image.size.width > 30) image = ResizeImage(image, 30, 30);
+         if (image.size.width > 30) image = ResizeImage(image, 30, 30);
          //-----------------------------------------------------------------------------------------------------------------------------------------
          PFFile *fileThumbnail = [PFFile fileWithName:@"thumbnail.jpg" data:UIImageJPEGRepresentation(image, 0.6)];
          [fileThumbnail saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
@@ -125,7 +112,7 @@
          //     if (error != nil) [ProgressHUD showError:error.userInfo[@"error"]];
           }];
          //-----------------------------------------------------------------------------------------------------------------------------------------
-         user[PF_USER_EMAILCOPY] = userData[@"email"];
+         user[PF_USER_EMAIL] = userData[@"email"];
          user[PF_USER_FULLNAME] = userData[@"name"];
          user[PF_USER_FULLNAME_LOWER] = [userData[@"name"] lowercaseString];
          user[PF_USER_FACEBOOKID] = userData[@"id"];
@@ -135,22 +122,48 @@
           {
               if (error == nil)
               {
-                  PFInstallation *currentInstallation = [PFInstallation currentInstallation];
-                  [currentInstallation setObject:[PFUser currentUser] forKey:@"owner"];
-                  [currentInstallation saveInBackground];
+                  [FBRequestConnection startWithGraphPath:@"/me/friends"
+                                               parameters:nil
+                                               HTTPMethod:@"GET"
+                                        completionHandler:^(
+                                                            FBRequestConnection *connection,
+                                                            id result,
+                                                            NSError *error
+                                                            ) {
+                                            /* handle the result */
+                                            NSLog(@"response = %@",result);
+                                            
+                                            
+                                            if (error==nil) {
+                                                [PFCloud callFunctionInBackground:@"updateFriends"
+                                                                   withParameters:[NSDictionary dictionaryWithObjectsAndKeys:result[@"data"], @"user_friends",[PFUser currentUser].objectId,@"user_id", nil]
+                                                                            block:^(id results, NSError *error) {
+                                                                                if (!error) {
+                                                                                    // this is where you handle the results and change the UI.
+                                                                                    NSLog(@"results = %@",result);
+                                                                                    
+                                                                                    //Go inside App
+                                                                                    
+                                                                                    
+                                                                                    [self loginSuccess];
+                                                                                    
+                                                                                }
+                                                                            }];
+                                            }
+                                            
+                                            
+                                        }];
                   
-                  [self loginSuccess];
                   
              //     [self userLoggedIn:user];
               }
               else
               {
                   [PFUser logOut];
-              //    [ProgressHUD showError:error.userInfo[@"error"]];
               }
           }];
      }
-                                     failure:^(AFHTTPRequestOperation *operation, NSError *error)
+    failure:^(AFHTTPRequestOperation *operation, NSError *error)
      {
          [PFUser logOut];
         // [ProgressHUD showError:@"Failed to fetch Facebook profile picture."];
@@ -160,10 +173,14 @@
 }
 -(void)loginSuccess{
    
+    PFInstallation *currentInstallation = [PFInstallation currentInstallation];
+    [currentInstallation setObject:[PFUser currentUser] forKey:@"owner"];
+    [currentInstallation saveInBackground];
+    
     UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
     InterestsViewController *IVVC = [storyBoard instantiateViewControllerWithIdentifier:@"InterestsViewController"];
     
-    [self  presentViewController:IVVC animated:YES completion:nil];
+    [self.navigationController pushViewController:IVVC animated:YES];
 }
 
 @end

@@ -8,7 +8,8 @@
 
 #import "FeedViewController.h"
 #import "ECSlidingViewController.h"
-#import "TakepicViewController.h"
+#import <Parse/Parse.h>
+#import "ViewController.h"
 
 @interface FeedViewController ()
 
@@ -16,10 +17,29 @@
 
 @implementation FeedViewController
 
+//-------------------------------------------------------------------------------------------------------------------------------------------------
+- (void)viewDidAppear:(BOOL)animated
+//-------------------------------------------------------------------------------------------------------------------------------------------------
+{
+    [super viewDidAppear:animated];
+    //---------------------------------------------------------------------------------------------------------------------------------------------
+    if ([PFUser currentUser] != nil)
+    {
+        //[self refreshTable];
+    }
+    else{
+        
+        UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+        ViewController *loginView = [sb instantiateViewControllerWithIdentifier:@"ViewController"];
+        
+        UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:loginView];
+        [self presentViewController:navigationController animated:YES completion:nil];
+    }
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
     
     UIButton *btnNext1 =[[UIButton alloc] init];
     [btnNext1 setBackgroundImage:[UIImage imageNamed:@"FeedSettings"] forState:UIControlStateNormal];
@@ -32,33 +52,11 @@
     
     UIImageView *titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Logo"]];
     [self.navigationController.navigationBar.topItem setTitleView:titleView];
-    
-    
-//    FeedpageTab=[[UITabBarController alloc]init];
-//    
-//   
-//    
-//    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
-//    FeedViewController *feedVC = [sb instantiateViewControllerWithIdentifier:@"FeedNav"];
-//    feedVC.title=@"SHARE";
-//    
-//    
-//  
-//    
-//    FeedpageTab.viewControllers=[NSArray arrayWithObjects:feedVC, nil];
-//    
-//    [self.view addSubview:FeedpageTab.view];
-    
-    
-    
-    
-    
-    
 
 }
 - (void)showMenu
 {
-    
+    //  if (![[NSUserDefaults standardUserDefaults]objectForKey:@"Selected_plan"]==0)
     
     [self.slidingViewController anchorTopViewTo:ECRight];
 }

@@ -9,6 +9,11 @@
 #import "AppDelegate.h"
 #import <Parse/Parse.h>
 #import <ParseFacebookUtils/PFFacebookUtils.h>
+#import "InterestsViewController.h"
+#import "FeedViewController.h"
+#import "LeftMenuViewController.h"
+#import "ECSlidingViewController.h"
+
 
 @interface AppDelegate ()
 
@@ -19,8 +24,6 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    
-   // [Parse enableLocalDatastore];
     
     // Initialize Parse.
     [Parse setApplicationId:@"BOLopgLNbnrfZbLIbj7JBwZpn4NRpmgOszlYmKlN"
@@ -54,6 +57,21 @@
         [application registerForRemoteNotificationTypes:
          (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeSound)];
     }
+    
+    
+    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+    UINavigationController *feedNavVC = (UINavigationController*)[sb instantiateViewControllerWithIdentifier:@"FeedNav"];
+    
+    LeftMenuViewController *leftView = [sb instantiateViewControllerWithIdentifier:@"LeftMenuNavVC"];
+    ECSlidingViewController *slidingViewController = [[ECSlidingViewController alloc] init];
+    slidingViewController.topViewController = feedNavVC;
+    slidingViewController.underLeftViewController =leftView;
+    
+    self.window = [[UIWindow alloc] initWithFrame:UIScreen.mainScreen.bounds];
+    
+    self.window.rootViewController = slidingViewController;
+    [self.window makeKeyAndVisible];
+    // [self dismissViewControllerAnimated:YES completion:nil];
     
     return YES;
 }

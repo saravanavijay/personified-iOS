@@ -15,6 +15,7 @@
 		9879660C1A73892A0088D162 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9879660B1A73892A0088D162 /* Images.xcassets */; };
 		9879660F1A73892A0088D162 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9879660D1A73892A0088D162 /* LaunchScreen.xib */; };
 		9879661B1A73892A0088D162 /* personifITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9879661A1A73892A0088D162 /* personifITests.m */; };
+		987966271A73B3280088D162 /* Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 987966261A73B3280088D162 /* Utilities.m */; };
 		996BD65A1A738BD300CE4337 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 996BD6591A738BD300CE4337 /* FacebookSDK.framework */; };
 		996BD65C1A738CA300CE4337 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 996BD65B1A738CA300CE4337 /* Parse.framework */; };
 		996BD65E1A738D6200CE4337 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 996BD65D1A738D6200CE4337 /* AudioToolbox.framework */; };
@@ -81,6 +82,8 @@
 		987966141A73892A0088D162 /* personifITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = personifITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		987966191A73892A0088D162 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9879661A1A73892A0088D162 /* personifITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = personifITests.m; sourceTree = "<group>"; };
+		987966251A73B3280088D162 /* Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utilities.h; sourceTree = "<group>"; };
+		987966261A73B3280088D162 /* Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utilities.m; sourceTree = "<group>"; };
 		996BD6591A738BD300CE4337 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		996BD65B1A738CA300CE4337 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		996BD65D1A738D6200CE4337 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -206,6 +209,7 @@
 		987965FD1A73892A0088D162 /* personifI */ = {
 			isa = PBXGroup;
 			children = (
+				987966241A73B30F0088D162 /* Utilities */,
 				996BD68C1A73CA4600CE4337 /* ThirdpartyClasses */,
 				996BD6801A73C89200CE4337 /* Customcells */,
 				996BD6751A73975800CE4337 /* Images */,
@@ -247,6 +251,15 @@
 				987966191A73892A0088D162 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		987966241A73B30F0088D162 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				987966251A73B3280088D162 /* Utilities.h */,
+				987966261A73B3280088D162 /* Utilities.m */,
+			);
+			name = Utilities;
 			sourceTree = "<group>";
 		};
 		996BD6581A738BC200CE4337 /* FrameWorks */ = {
@@ -417,6 +430,7 @@
 				TargetAttributes = {
 					987965FA1A73892A0088D162 = {
 						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = KD5V7696DN;
 					};
 					987966131A73892A0088D162 = {
 						CreatedOnToolsVersion = 6.1.1;
@@ -518,6 +532,7 @@
 				996BD67F1A73C88700CE4337 /* InterestsViewController.m in Sources */,
 				987966071A73892A0088D162 /* ViewController.m in Sources */,
 				987966041A73892A0088D162 /* AppDelegate.m in Sources */,
+				987966271A73B3280088D162 /* Utilities.m in Sources */,
 				996BD6931A73CA4600CE4337 /* UIImage+ImageWithUIView.m in Sources */,
 				987966011A73892A0088D162 /* main.m in Sources */,
 				996BD68B1A73CA0800CE4337 /* LeftMenuViewController.m in Sources */,
@@ -647,6 +662,8 @@
 			baseConfigurationReference = 050D6B88D56803C475BFEDED /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/personifI/FrameWorks",
@@ -654,6 +671,7 @@
 				INFOPLIST_FILE = personifI/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -663,6 +681,8 @@
 			baseConfigurationReference = 4A375D9FDBF43568911A406D /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/personifI/FrameWorks",
@@ -670,6 +690,7 @@
 				INFOPLIST_FILE = personifI/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 			};
 			name = Release;

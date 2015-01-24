@@ -227,30 +227,28 @@
 //    picker.sourceType = UIImagePickerControllerSourceTypeCamera;
 //    
 //    [self presentViewController:picker animated:YES completion:NULL];
-    
-    
-    
-   
     NSLog(@"_selectedArray %@",_selectedArray);
     PFUser* user=[PFUser currentUser];
     user[@"brandFollowing"]=[NSArray arrayWithArray:_brandSelectedArray];
     user[@"topicFollowing"]=[NSArray arrayWithArray:_selectedArray];
-        [user saveInBackground];
+    [user saveInBackground];
     
     
+    [self.navigationController dismissViewControllerAnimated:YES completion:^{
+        
+    }];
     
-    
-      UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
-    UINavigationController *feedNavVC = (UINavigationController*)[sb instantiateViewControllerWithIdentifier:@"FeedNav"];
-    
-    FeedViewController *feedView = [feedNavVC.viewControllers objectAtIndex:0];
-    LeftMenuViewController *leftView = [sb instantiateViewControllerWithIdentifier:@"LeftMenuNavVC"];
-    ECSlidingViewController *slidingViewController = [[ECSlidingViewController alloc] init];
-    slidingViewController.topViewController = feedNavVC;
-    slidingViewController.underLeftViewController =leftView;
-    
-    // [self dismissViewControllerAnimated:YES completion:nil];
-    [self presentViewController:slidingViewController animated:YES completion:nil];
+//      UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+//    UINavigationController *feedNavVC = (UINavigationController*)[sb instantiateViewControllerWithIdentifier:@"FeedNav"];
+//    
+//    FeedViewController *feedView = [feedNavVC.viewControllers objectAtIndex:0];
+//    LeftMenuViewController *leftView = [sb instantiateViewControllerWithIdentifier:@"LeftMenuNavVC"];
+//    ECSlidingViewController *slidingViewController = [[ECSlidingViewController alloc] init];
+//    slidingViewController.topViewController = feedNavVC;
+//    slidingViewController.underLeftViewController =leftView;
+//    
+//    // [self dismissViewControllerAnimated:YES completion:nil];
+//    [self presentViewController:slidingViewController animated:YES completion:nil];
     
     
 }
