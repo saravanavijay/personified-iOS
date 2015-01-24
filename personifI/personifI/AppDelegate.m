@@ -33,8 +33,8 @@
     
     // [Optional] Track statistics around application opens.
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
-    
-    
+    [PFImageView class];
+
 //    UIUserNotificationType userNotificationTypes = (UIUserNotificationTypeAlert |
 //                                                    UIUserNotificationTypeBadge |
 //                                                    UIUserNotificationTypeSound);
