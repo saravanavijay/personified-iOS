@@ -35,6 +35,11 @@ static NSString* const WaterfallHeaderIdentifier = @"WaterfallHeader";
     if ([PFUser currentUser] != nil)
     {
         
+        
+        PFInstallation *currentInstallation = [PFInstallation currentInstallation];
+        [currentInstallation setObject:[PFUser currentUser] forKey:@"owner"];
+        [currentInstallation saveInBackground];
+        
         [PFCloud callFunctionInBackground:@"getFeed"
                            withParameters:[NSDictionary dictionaryWithObjectsAndKeys:@"tAQ4QzF6wp",@"userId", nil]
                                     block:^(id results, NSError *error) {
@@ -53,7 +58,7 @@ static NSString* const WaterfallHeaderIdentifier = @"WaterfallHeader";
         
     }
     else{
-        
+      
         UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
         ViewController *loginView = [sb instantiateViewControllerWithIdentifier:@"ViewController"];
         
@@ -255,7 +260,30 @@ static NSString* const WaterfallHeaderIdentifier = @"WaterfallHeader";
 //    return _cellHeights;
 //}
 
-
+-(void)sendPushForRecommendation{
+    PFQuery *query = [PFQuery queryWithClassName:@"User"];
+    [query whereKey:@"objectId" equalTo:[PFUser currentUser].objectId];
+    [query includeKey:@"facebookFriends"];
+    [query setLimit:1000];
+    
+    
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        NSLog(@"Users = %@",objects[0][@"facebookFriends"]);
+    }];
+//    PFQuery *queryInstallation = [PFInstallation query];
+//   // [queryInstallation whereKey:PF_INSTALLATION_USER matchesKey:PF_MESSAGES_USER inQuery:query];
+//    
+//    PFPush *push = [[PFPush alloc] init];
+//    [push setQuery:queryInstallation];
+//    [push setMessage:text];
+//    [push sendPushInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
+//     {
+//         if (error != nil)
+//         {
+//             NSLog(@"SendPushNotification send error.");
+//         }
+//     }];
+}
 
 
 @end

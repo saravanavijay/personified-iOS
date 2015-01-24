@@ -172,10 +172,6 @@
     [[NSOperationQueue mainQueue] addOperation:operation];
 }
 -(void)loginSuccess{
-   
-    PFInstallation *currentInstallation = [PFInstallation currentInstallation];
-    [currentInstallation setObject:[PFUser currentUser] forKey:@"owner"];
-    [currentInstallation saveInBackground];
     
     UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
     InterestsViewController *IVVC = [storyBoard instantiateViewControllerWithIdentifier:@"InterestsViewController"];
