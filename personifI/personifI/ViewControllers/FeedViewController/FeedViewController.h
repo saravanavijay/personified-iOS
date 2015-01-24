@@ -12,5 +12,8 @@
 
 @property (weak, nonatomic) IBOutlet UICollectionView *cv;
 
+@property (strong, nonatomic) IBOutlet UIButton *OwnProdAction;
 
+@property (strong, nonatomic) IBOutlet UIButton *interesrProdAction;
+@property (strong, nonatomic) IBOutlet UIButton *LinkPostAction;
 @end
