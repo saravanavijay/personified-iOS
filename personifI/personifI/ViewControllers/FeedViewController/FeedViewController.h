@@ -10,7 +10,7 @@
 
 @interface FeedViewController : UIViewController
 
-
 @property (weak, nonatomic) IBOutlet UICollectionView *cv;
+
 
 @end
