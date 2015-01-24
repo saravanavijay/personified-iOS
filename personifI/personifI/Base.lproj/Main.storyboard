@@ -222,7 +222,7 @@
     </scenes>
     <resources>
         <image name="Facebook Login.png" width="273" height="42"/>
-        <image name="Follow.png" width="273" height="42"/>
-        <image name="Following.png" width="273" height="42"/>
+        <image name="Follow.png" width="74" height="29"/>
+        <image name="Following.png" width="74" height="29"/>
     </resources>
 </document>

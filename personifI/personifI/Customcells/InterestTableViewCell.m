@@ -13,6 +13,9 @@
 
 - (void)awakeFromNib {
     // Initialization code
+    
+    [self.rightButton setImage:[UIImage imageNamed:@"Follow"] forState:UIControlStateNormal];
+    [self.rightButton setImage:[UIImage imageNamed:@"Following"] forState:UIControlStateSelected];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -24,6 +27,7 @@
 - (IBAction)rightActionButton:(id)sender {
     if([self.delegate respondsToSelector:@selector(userDidSelectedInterestForCell:)])
     {
+        
         [self.delegate userDidSelectedInterestForCell:self];
         NSLog(@"from cell %@",sender);
     }

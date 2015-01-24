@@ -31,10 +31,10 @@
     
     
     
-    _interestArray=[[NSMutableArray alloc]initWithObjects:@"Technology",@"Travel",@"Gadgets",@"Recipes",@"Photography",@"LuxuryCars",@"MotorCycles",@"Animals",@"Cartoons",@"Music",@"Sports",@"Entertainment" ,nil];
-    _selectedArray =[[NSMutableArray alloc]init];
-    
-    _interestImages=[[NSMutableArray alloc]initWithObjects:@"Follow",@"Follow",@"Follow",@"Follow",@"Follow",@"Follow",@"Follow",@"Follow",@"Follow",@"Follow",@"Follow",@"Follow",nil];
+//    _interestArray=[[NSMutableArray alloc]initWithObjects:@"Technology",@"Travel",@"Gadgets",@"Recipes",@"Photography",@"LuxuryCars",@"MotorCycles",@"Animals",@"Cartoons",@"Music",@"Sports",@"Entertainment" ,nil];
+  
+//    
+//    _interestImages=[[NSMutableArray alloc]initWithObjects:@"Follow",@"Follow",@"Follow",@"Follow",@"Follow",@"Follow",@"Follow",@"Follow",@"Follow",@"Follow",@"Follow",@"Follow",nil];
     
 
     
@@ -46,10 +46,35 @@
 //    [testObject saveInBackground];
 //    
 //    
-//    
-//    PFQuery *query = [PFQuery queryWithClassName:@"TestObject"];
-//    [query getObjectInBackgroundWithId:@"HRjn068Dam" block:^(PFObject *gameScore, NSError *error) {
-//        // Do something with the returned PFObject in the gameScore variable.
+//
+    _brandArray =[NSMutableArray array];
+    _interestArray = [NSMutableArray array];
+     _brandSelectedArray = [NSMutableArray array];
+    _selectedArray = [NSMutableArray array];
+    
+    PFQuery *query = [PFQuery queryWithClassName:@"Interest"];
+   [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+       NSLog(@"Objects = %@",objects);
+       for (NSDictionary* dict in objects) {
+           if ([dict[@"type"] isEqualToString:@"Brand"]) {
+               [_brandArray addObject:dict];
+           }
+           else
+           {
+               [_interestArray addObject:dict];
+           }
+       }
+       
+       NSLog(@"_brandArray %@",_brandArray);
+       NSLog(@"_interestArray %@",_interestArray);
+       
+      // _interestArray = [NSMutableArray arrayWithObject:objects];
+       [self.InterestTableView reloadData];
+       
+   }];
+    
+//               getObjectInBackgroundWithId:@"HRjn068Dam" block:^(PFObject *gameScore, NSError *error) {
+//       // Do something with the returned PFObject in the gameScore variable.
 //        NSLog(@"gameScore %@", gameScore);
 //    }];
     
@@ -71,21 +96,58 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+-(NSInteger) numberOfSectionsInTableView:(UITableView *)tableView{
+    return 2;
+}
 - (NSInteger)tableView:(UITableView*)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [_interestArray count];
+    if (section==0) {
+        return [_interestArray count];
+    }
+    else
+    {
+        return [_brandArray count];
+    }
+   
 }
 
 - (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
      InterestTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"InterestCell" forIndexPath:indexPath];
     
-    NSLog(@"%@",[_interestImages objectAtIndex:indexPath.row]);
- //   cell.interestLabel=[[UILabel alloc]init];
-    cell.interestLabel.text=[_interestArray objectAtIndex:indexPath.row];
-    [cell.rightButton setImage:[UIImage imageNamed:[_interestImages objectAtIndex:indexPath.row]] forState:UIControlStateNormal];
-    cell.backgroundColor=[UIColor clearColor];
-    
+   
+    if (indexPath.section==0)
+    {
+        cell.interestLabel.text=[_interestArray objectAtIndex:indexPath.row][@"name"];
+        cell.backgroundColor=[UIColor clearColor];
+        
+        
+        if ([_selectedArray containsObject:[_interestArray objectAtIndex:indexPath.row][@"name"]])
+        {
+            cell.rightButton.selected = YES;
+        }
+        else{
+            cell.rightButton.selected = NO;
+        }
+    }
+    else
+    {
+        cell.interestLabel.text=[_brandArray objectAtIndex:indexPath.row][@"name"];
+        cell.backgroundColor=[UIColor clearColor];
+        
+        if ([_brandSelectedArray containsObject:[_brandArray objectAtIndex:indexPath.row][@"name"]])
+        {
+            cell.rightButton.selected = YES;
+        }
+        else{
+            cell.rightButton.selected = NO;
+        }
+        
+
+
+        
+    }
     cell.selectionStyle=UITableViewCellSelectionStyleNone;
     return cell;
 }
@@ -99,35 +161,63 @@
     [self userDidSelectedInterestForCell:cells];
     
 }
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
+    NSString *headerTitle = @"";
+    
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.bounds.size.width, 30)];
+        
+        if (section == 0)
+        {
+            headerTitle = @"Topic";
+            
+        }
+   
+    else
+        if (section ==1 )
+        {
+            headerTitle = @"Brand";
+            
+        }
+     [headerView setBackgroundColor:[UIColor darkGrayColor]];
+    return headerTitle;
+}
 - (void)userDidSelectedInterestForCell:(InterestTableViewCell*)cell{
     
     
+    NSIndexPath* indexPath = [self.InterestTableView indexPathForCell:cell];
     
-    if (![_selectedArray containsObject:[_interestArray objectAtIndex:_indexStored]]){
-        
-        cell.rightButton.selected=YES;
-        [_selectedArray addObject:[_interestArray objectAtIndex:_indexStored]];
+    
+    if (indexPath.section==0){
+    
+        if (![_selectedArray containsObject:[_interestArray objectAtIndex:indexPath.item][@"name"]]){
+            
+            cell.rightButton.selected=YES;
+            [_selectedArray addObject:[_interestArray objectAtIndex:indexPath.item][@"name"]];
+        }
+        else{
+            
+            cell.rightButton.selected=NO;
+            [_selectedArray removeObject:[_interestArray objectAtIndex:indexPath.item][@"name"]];
+        }
     }
     else{
+    
+        if (![_brandSelectedArray containsObject:[_brandArray objectAtIndex:indexPath.item][@"name"]]){
+            cell.rightButton.selected=YES;
+            [_brandSelectedArray addObject:[_brandArray objectAtIndex:indexPath.item][@"name"]];
+            
+        }
+        else{
+            cell.rightButton.selected=NO;
+             [_brandSelectedArray removeObject:[_brandArray objectAtIndex:indexPath.item][@"name"]];
+        }
+    
+    }
         
-        cell.rightButton.selected=NO;
-        [_selectedArray removeObject:[_interestArray objectAtIndex:_indexStored]];
+   
         
         
     }
-    
-        
-    NSLog(@"_SelectedArray %@",_selectedArray);
-    
-        
-        
-    }
-    
-    
-    
-    
-    
-
 
 - (IBAction)NextbuttonAction:(id)sender {
     
@@ -137,6 +227,18 @@
 //    picker.sourceType = UIImagePickerControllerSourceTypeCamera;
 //    
 //    [self presentViewController:picker animated:YES completion:NULL];
+    
+    
+    
+   
+    NSLog(@"_selectedArray %@",_selectedArray);
+    PFUser* user=[PFUser currentUser];
+    user[@"brandFollowing"]=[NSArray arrayWithArray:_brandSelectedArray];
+    user[@"topicFollowing"]=[NSArray arrayWithArray:_selectedArray];
+        [user saveInBackground];
+    
+    
+    
     
       UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
     UINavigationController *feedNavVC = (UINavigationController*)[sb instantiateViewControllerWithIdentifier:@"FeedNav"];

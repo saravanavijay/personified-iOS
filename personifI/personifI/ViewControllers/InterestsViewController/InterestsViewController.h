@@ -13,8 +13,11 @@
 
 @property (strong, nonatomic) IBOutlet UITableView *InterestTableView;
 @property (strong, nonatomic) NSMutableArray * interestArray;
+@property (strong, nonatomic) NSMutableArray * brandArray;
 @property (strong, nonatomic) NSMutableArray * interestImages;
 @property (strong, nonatomic) NSMutableArray * selectedArray;
+@property (strong, nonatomic) NSMutableArray * brandSelectedArray;
+
 @property(nonatomic)  NSInteger  indexStored;
 
 @property (strong, nonatomic) IBOutlet UIButton *nextAction;
