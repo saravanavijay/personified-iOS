@@ -49,6 +49,9 @@
 		996BD6A91A73CB4D00CE4337 /* RadLibs2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 996BD69D1A73CB4D00CE4337 /* RadLibs2.jpg */; };
 		996BD6AA1A73CB4D00CE4337 /* rightoff@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 996BD69E1A73CB4D00CE4337 /* rightoff@2x.jpg */; };
 		996BD6AB1A73CB4D00CE4337 /* righton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 996BD69F1A73CB4D00CE4337 /* righton@2x.png */; };
+		996BD6AF1A73E39300CE4337 /* TakepicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 996BD6AE1A73E39300CE4337 /* TakepicViewController.m */; };
+		996BD6B11A73E78200CE4337 /* cameraImage@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 996BD6B01A73E78200CE4337 /* cameraImage@2x.jpg */; };
+		996BD6B31A73FACF00CE4337 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 996BD6B21A73FACF00CE4337 /* AVFoundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -119,6 +122,10 @@
 		996BD69D1A73CB4D00CE4337 /* RadLibs2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = RadLibs2.jpg; sourceTree = "<group>"; };
 		996BD69E1A73CB4D00CE4337 /* rightoff@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "rightoff@2x.jpg"; sourceTree = "<group>"; };
 		996BD69F1A73CB4D00CE4337 /* righton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "righton@2x.png"; sourceTree = "<group>"; };
+		996BD6AD1A73E39300CE4337 /* TakepicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TakepicViewController.h; sourceTree = "<group>"; };
+		996BD6AE1A73E39300CE4337 /* TakepicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TakepicViewController.m; sourceTree = "<group>"; };
+		996BD6B01A73E78200CE4337 /* cameraImage@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "cameraImage@2x.jpg"; sourceTree = "<group>"; };
+		996BD6B21A73FACF00CE4337 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +133,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				996BD6B31A73FACF00CE4337 /* AVFoundation.framework in Frameworks */,
 				996BD67B1A73A15900CE4337 /* Social.framework in Frameworks */,
 				996BD6741A73961700CE4337 /* ParseFacebookUtils.framework in Frameworks */,
 				996BD6721A738DC100CE4337 /* libsqlite3.dylib in Frameworks */,
@@ -158,6 +166,7 @@
 		2C9D5EC5E677F38EA7186A75 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				996BD6B21A73FACF00CE4337 /* AVFoundation.framework */,
 				996BD67A1A73A15900CE4337 /* Social.framework */,
 				42B994672F81EA5DBF2A7564 /* libPods.a */,
 			);
@@ -264,6 +273,7 @@
 		996BD6751A73975800CE4337 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				996BD6B01A73E78200CE4337 /* cameraImage@2x.jpg */,
 				996BD6941A73CB4D00CE4337 /* FeedSettings@2x.png */,
 				996BD6951A73CB4D00CE4337 /* Follow@2x.png */,
 				996BD6961A73CB4D00CE4337 /* Following@2x.png */,
@@ -284,6 +294,7 @@
 		996BD6761A73975800CE4337 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				996BD6AC1A73E36E00CE4337 /* TakePictureViewController */,
 				996BD6841A73CA0800CE4337 /* FeedViewController */,
 				996BD6871A73CA0800CE4337 /* LeftMenuController */,
 				996BD67C1A73C88700CE4337 /* InterestsViewController */,
@@ -344,6 +355,15 @@
 				996BD6911A73CA4600CE4337 /* UIImage+ImageWithUIView.m */,
 			);
 			path = EcSliding;
+			sourceTree = "<group>";
+		};
+		996BD6AC1A73E36E00CE4337 /* TakePictureViewController */ = {
+			isa = PBXGroup;
+			children = (
+				996BD6AD1A73E39300CE4337 /* TakepicViewController.h */,
+				996BD6AE1A73E39300CE4337 /* TakepicViewController.m */,
+			);
+			path = TakePictureViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -444,6 +464,7 @@
 				996BD6AA1A73CB4D00CE4337 /* rightoff@2x.jpg in Resources */,
 				996BD6A11A73CB4D00CE4337 /* Follow@2x.png in Resources */,
 				996BD6A51A73CB4D00CE4337 /* Leoking_seleted@2x.png in Resources */,
+				996BD6B11A73E78200CE4337 /* cameraImage@2x.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -500,6 +521,7 @@
 				996BD6931A73CA4600CE4337 /* UIImage+ImageWithUIView.m in Sources */,
 				987966011A73892A0088D162 /* main.m in Sources */,
 				996BD68B1A73CA0800CE4337 /* LeftMenuViewController.m in Sources */,
+				996BD6AF1A73E39300CE4337 /* TakepicViewController.m in Sources */,
 				996BD6921A73CA4600CE4337 /* ECSlidingViewController.m in Sources */,
 				996BD68A1A73CA0800CE4337 /* FeedViewController.m in Sources */,
 				996BD6831A73C89200CE4337 /* InterestTableViewCell.m in Sources */,

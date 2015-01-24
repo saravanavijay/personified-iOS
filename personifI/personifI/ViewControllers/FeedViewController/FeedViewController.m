@@ -8,6 +8,7 @@
 
 #import "FeedViewController.h"
 #import "ECSlidingViewController.h"
+#import "TakepicViewController.h"
 
 @interface FeedViewController ()
 
@@ -31,11 +32,33 @@
     
     UIImageView *titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Logo"]];
     [self.navigationController.navigationBar.topItem setTitleView:titleView];
+    
+    
+//    FeedpageTab=[[UITabBarController alloc]init];
+//    
+//   
+//    
+//    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+//    FeedViewController *feedVC = [sb instantiateViewControllerWithIdentifier:@"FeedNav"];
+//    feedVC.title=@"SHARE";
+//    
+//    
+//  
+//    
+//    FeedpageTab.viewControllers=[NSArray arrayWithObjects:feedVC, nil];
+//    
+//    [self.view addSubview:FeedpageTab.view];
+    
+    
+    
+    
+    
+    
 
 }
 - (void)showMenu
 {
-    //  if (![[NSUserDefaults standardUserDefaults]objectForKey:@"Selected_plan"]==0)
+    
     
     [self.slidingViewController anchorTopViewTo:ECRight];
 }

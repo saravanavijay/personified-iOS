@@ -10,4 +10,11 @@
 
 @interface FeedViewController : UIViewController
 
+
+{
+    
+     UITabBarController*FeedpageTab;
+    
+}
+
 @end

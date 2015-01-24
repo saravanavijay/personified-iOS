@@ -149,7 +149,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dmd-Nk-XWn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1409" y="125"/>
+            <point key="canvasLocation" x="1591" y="136"/>
         </scene>
         <!--Left Menu View Controller-->
         <scene sceneID="NQ2-Kh-Usx">
@@ -178,7 +178,77 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7ML-nf-CVO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2853" y="205"/>
+            <point key="canvasLocation" x="2475" y="-3"/>
+        </scene>
+        <!--Takepic View Controller-->
+        <scene sceneID="5yE-XY-hc6">
+            <objects>
+                <viewController storyboardIdentifier="TakepicViewController" id="MQ7-1H-bFh" customClass="TakepicViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="yV1-FS-wAc"/>
+                        <viewControllerLayoutGuide type="bottom" id="ml2-fQ-Shl"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="JcH-2A-U0D">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J02-Mv-CE3">
+                                <rect key="frame" x="109" y="476" width="102" height="34"/>
+                                <state key="normal" title="Take a picture">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="TakPicAction:" destination="MQ7-1H-bFh" eventType="touchUpInside" id="pqT-Va-Za8"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="cameraImage.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="b2z-lt-S40">
+                                <rect key="frame" x="24" y="323" width="273" height="117"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="About :" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kMP-2I-9iQ">
+                                <rect key="frame" x="131" y="75" width="57" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DCj-Ws-DKT">
+                                <rect key="frame" x="75" y="107" width="166" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6bz-OI-FoC">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Type :" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="88I-ll-jsG">
+                                <rect key="frame" x="135" y="151" width="51" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Select" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yjP-5g-X1c">
+                                <rect key="frame" x="83" y="190" width="150" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="kUU-rR-1pU"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="FieldName" destination="DCj-Ws-DKT" id="w9g-cQ-dZX"/>
+                        <outlet property="ImageView" destination="b2z-lt-S40" id="Q09-fj-ZcL"/>
+                        <outlet property="aboutLabel" destination="kMP-2I-9iQ" id="jJD-op-UcD"/>
+                        <outlet property="selecttypeLabal" destination="yjP-5g-X1c" id="VK4-Zz-3Cx"/>
+                        <outlet property="takepicLabel" destination="J02-Mv-CE3" id="ete-V2-AQu"/>
+                        <outlet property="typeLabel" destination="88I-ll-jsG" id="ZYG-PG-gaE"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pUD-pU-v12" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3853" y="-133"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ZRh-Hk-HcS">
@@ -198,7 +268,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5xW-Vd-zka" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1005" y="205"/>
+            <point key="canvasLocation" x="1149" y="71"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="VLm-Gu-Ubs">
@@ -217,12 +287,34 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KGu-LW-4Vk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2297" y="213"/>
+            <point key="canvasLocation" x="2059" y="-3"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="1uO-3M-VoZ">
+            <objects>
+                <navigationController storyboardIdentifier="TakeapicNav" automaticallyAdjustsScrollViewInsets="NO" id="lRm-gD-4L2" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="2da-zc-hm8">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="MQ7-1H-bFh" kind="relationship" relationship="rootViewController" id="2ht-fx-yZV"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="D9r-E4-fZ4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3041" y="-133"/>
         </scene>
     </scenes>
     <resources>
         <image name="Facebook Login.png" width="273" height="42"/>
         <image name="Follow.png" width="74" height="29"/>
         <image name="Following.png" width="74" height="29"/>
+        <image name="cameraImage.jpg" width="273" height="232"/>
     </resources>
+    <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
 </document>
