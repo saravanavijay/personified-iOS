@@ -13,6 +13,7 @@
 #import "AFNetworking.h"
 #import <Parse/Parse.h>
 #import "AppDelegate.h"
+#import "InterestsViewController.h"
 
 
 @interface ViewController ()
@@ -65,7 +66,10 @@
              {
                  [self requestFacebook:user];
              }
-            // else [self userLoggedIn:user];
+             else {
+                 [self loginSuccess];
+                 
+             }
          }
          
      }];
@@ -135,7 +139,7 @@
                   [currentInstallation setObject:[PFUser currentUser] forKey:@"owner"];
                   [currentInstallation saveInBackground];
                   
-                  
+                  [self loginSuccess];
                   
              //     [self userLoggedIn:user];
               }
@@ -154,4 +158,12 @@
     //---------------------------------------------------------------------------------------------------------------------------------------------
     [[NSOperationQueue mainQueue] addOperation:operation];
 }
+-(void)loginSuccess{
+   
+    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+    InterestsViewController *IVVC = [storyBoard instantiateViewControllerWithIdentifier:@"InterestsViewController"];
+    
+    [self  presentViewController:IVVC animated:YES completion:nil];
+}
+
 @end
