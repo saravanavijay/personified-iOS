@@ -56,6 +56,7 @@
 		996BD6AF1A73E39300CE4337 /* TakepicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 996BD6AE1A73E39300CE4337 /* TakepicViewController.m */; };
 		996BD6B11A73E78200CE4337 /* cameraImage@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 996BD6B01A73E78200CE4337 /* cameraImage@2x.jpg */; };
 		996BD6B31A73FACF00CE4337 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 996BD6B21A73FACF00CE4337 /* AVFoundation.framework */; };
+		99BAA9851A74C28C00F566C1 /* RecommendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 99BAA9841A74C28C00F566C1 /* RecommendViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -138,6 +139,8 @@
 		996BD6AE1A73E39300CE4337 /* TakepicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TakepicViewController.m; sourceTree = "<group>"; };
 		996BD6B01A73E78200CE4337 /* cameraImage@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "cameraImage@2x.jpg"; sourceTree = "<group>"; };
 		996BD6B21A73FACF00CE4337 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		99BAA9831A74C28C00F566C1 /* RecommendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecommendViewController.h; sourceTree = "<group>"; };
+		99BAA9841A74C28C00F566C1 /* RecommendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecommendViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -329,6 +332,7 @@
 		996BD6761A73975800CE4337 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				99BAA9821A74C27200F566C1 /* RecommendViewcontroller */,
 				996BD6AC1A73E36E00CE4337 /* TakePictureViewController */,
 				996BD6841A73CA0800CE4337 /* FeedViewController */,
 				996BD6871A73CA0800CE4337 /* LeftMenuController */,
@@ -400,6 +404,15 @@
 				996BD6AE1A73E39300CE4337 /* TakepicViewController.m */,
 			);
 			path = TakePictureViewController;
+			sourceTree = "<group>";
+		};
+		99BAA9821A74C27200F566C1 /* RecommendViewcontroller */ = {
+			isa = PBXGroup;
+			children = (
+				99BAA9831A74C28C00F566C1 /* RecommendViewController.h */,
+				99BAA9841A74C28C00F566C1 /* RecommendViewController.m */,
+			);
+			path = RecommendViewcontroller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -564,6 +577,7 @@
 				996BD68B1A73CA0800CE4337 /* LeftMenuViewController.m in Sources */,
 				996BD6AF1A73E39300CE4337 /* TakepicViewController.m in Sources */,
 				996BD6921A73CA4600CE4337 /* ECSlidingViewController.m in Sources */,
+				99BAA9851A74C28C00F566C1 /* RecommendViewController.m in Sources */,
 				996BD68A1A73CA0800CE4337 /* FeedViewController.m in Sources */,
 				996BD6831A73C89200CE4337 /* InterestTableViewCell.m in Sources */,
 				987966321A740B9F0088D162 /* FRGWaterfallCollectionViewLayout.m in Sources */,

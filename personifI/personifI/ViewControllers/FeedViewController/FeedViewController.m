@@ -13,6 +13,7 @@
 #import "FRGWaterfallCollectionViewCell.h"
 #import "FRGWaterfallCollectionViewLayout.h"
 #import "TakepicViewController.h"
+#import "RecommendViewController.h"
 
 static NSString* const WaterfallCellIdentifier = @"WaterfallCell";
 static NSString* const WaterfallHeaderIdentifier = @"WaterfallHeader";
@@ -323,6 +324,10 @@ static NSString* const WaterfallHeaderIdentifier = @"WaterfallHeader";
             [PFPush sendPushDataToQuery:pushQuery withData:data error:nil];
             
             
+          
+            
+            
+            
             
           //  PFQuery *query = [PFUser query];
 //            [query whereKey:@"objectId" equalTo:user.objectId];
@@ -342,6 +347,12 @@ static NSString* const WaterfallHeaderIdentifier = @"WaterfallHeader";
 //             }];
         }
     }];
+    UIStoryboard *sb=[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle  mainBundle]];
+    
+    RecommendViewController * recommendView=[sb instantiateViewControllerWithIdentifier:@"recommendNav" ];
+    
+    
+    [self presentViewController:recommendView animated:YES completion:nil];
 }
 
 - (IBAction)ownedAction:(id)sender {
