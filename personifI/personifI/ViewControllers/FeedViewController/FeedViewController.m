@@ -12,6 +12,7 @@
 #import "ViewController.h"
 #import "FRGWaterfallCollectionViewCell.h"
 #import "FRGWaterfallCollectionViewLayout.h"
+#import "TakepicViewController.h"
 
 static NSString* const WaterfallCellIdentifier = @"WaterfallCell";
 static NSString* const WaterfallHeaderIdentifier = @"WaterfallHeader";
@@ -286,6 +287,7 @@ static NSString* const WaterfallHeaderIdentifier = @"WaterfallHeader";
 }
 
 
+
 - (IBAction)recommendClick:(id)sender {
     PFQuery *query = [PFUser query];
     PFRelation *relation = [[PFUser currentUser] relationForKey:@"facebookFriends"];
@@ -340,5 +342,32 @@ static NSString* const WaterfallHeaderIdentifier = @"WaterfallHeader";
 //             }];
         }
     }];
+}
+
+- (IBAction)ownedAction:(id)sender {
+    
+    UIStoryboard *sb=[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle  mainBundle]];
+
+  TakepicViewController * takePic=[sb instantiateViewControllerWithIdentifier:@"TakepicViewController"];
+    
+    takePic.Selectedtypetext=@"Own";
+    
+      [self presentViewController:takePic animated:YES completion:nil];
+    
+
+
+}
+
+- (IBAction)InterestedProdList:(id)sender {
+    
+    UIStoryboard *sb=[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle  mainBundle]];
+    
+    TakepicViewController * takePic=[sb instantiateViewControllerWithIdentifier:@"TakepicViewController"];
+    
+    takePic.Selectedtypetext=@"Interest";
+    
+    [self presentViewController:takePic animated:YES completion:nil];
+    
+    
 }
 @end

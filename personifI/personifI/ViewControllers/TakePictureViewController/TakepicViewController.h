@@ -14,10 +14,9 @@
     NSData *imageData;
     NSString *userEnteredText;
     NSString* fieldNameText;
-    UIPickerView * pickerView;
-    UIToolbar* toolBar;
-    NSMutableArray* Typearray;
-    NSString *Selectedtypetext;
+    
+   
+ 
 
     
     
@@ -32,7 +31,6 @@
 @property (strong,nonatomic) UILabel * overLayViewTextView;
 @property (strong, nonatomic) IBOutlet UITextField *FieldName;
 @property (strong, nonatomic) IBOutlet UILabel *aboutLabel;
-@property (strong, nonatomic) IBOutlet UILabel *typeLabel;
-@property (strong, nonatomic) IBOutlet UITextField *typetextField;
+@property (strong, nonatomic) NSString *Selectedtypetext;
 
 @end

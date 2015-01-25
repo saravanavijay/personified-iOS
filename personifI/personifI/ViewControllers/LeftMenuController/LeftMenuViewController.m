@@ -102,21 +102,22 @@
     }
     if (indexPath.row==1){
         
-        UIStoryboard *sb=[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle  mainBundle]];
+//        UIStoryboard *sb=[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle  mainBundle]];
+//        
+//        TakepicViewController * takePic=[sb instantiateViewControllerWithIdentifier:@"TakeapicNav" ];
+//        
+//    
+//        
+//        
+//        [self.slidingViewController anchorTopViewOffScreenTo:ECRight animations:nil onComplete:^{
+//            CGRect frame = self.slidingViewController.topViewController.view.frame;
+//            self.slidingViewController.topViewController = takePic;
+//            self.slidingViewController.topViewController.view.frame = frame;
+//            [self.slidingViewController resetTopView];
+//            
+//            
+//        }];
         
-        TakepicViewController * takePic=[sb instantiateViewControllerWithIdentifier:@"TakeapicNav" ];
-        
-    
-        
-        
-        [self.slidingViewController anchorTopViewOffScreenTo:ECRight animations:nil onComplete:^{
-            CGRect frame = self.slidingViewController.topViewController.view.frame;
-            self.slidingViewController.topViewController = takePic;
-            self.slidingViewController.topViewController.view.frame = frame;
-            [self.slidingViewController resetTopView];
-            
-            
-        }];
         
     }
    
