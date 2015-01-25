@@ -16,4 +16,5 @@
 
 @property (strong, nonatomic) IBOutlet UIButton *interesrProdAction;
 @property (strong, nonatomic) IBOutlet UIButton *LinkPostAction;
+- (IBAction)recommendClick:(id)sender;
 @end

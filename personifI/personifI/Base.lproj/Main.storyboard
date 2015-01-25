@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C99d" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -240,7 +240,7 @@
                                     <outlet property="delegate" destination="u29-sa-yht" id="Uf7-eU-jKu"/>
                                 </connections>
                             </collectionView>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gSu-Os-RLy">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gSu-Os-RLy">
                                 <rect key="frame" x="0.0" y="525" width="320" height="43"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wvR-J1-rDe">
@@ -252,12 +252,6 @@
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QmH-zs-Gw6">
                                         <rect key="frame" x="134" y="8" width="52" height="30"/>
                                         <state key="normal" title="Interest">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4fg-f5-oGL">
-                                        <rect key="frame" x="257" y="8" width="30" height="30"/>
-                                        <state key="normal" title="Link">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
@@ -275,14 +269,29 @@
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4fg-f5-oGL">
+                                        <rect key="frame" x="224" y="8" width="88" height="30"/>
+                                        <state key="normal" title="Recommend">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="recommendClick:" destination="u29-sa-yht" eventType="touchUpInside" id="bfH-J3-6Bi"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="43" id="xgn-ek-f2R"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="OxK-3X-IAk" firstAttribute="top" secondItem="gSu-Os-RLy" secondAttribute="bottom" id="FL6-Vy-rTc"/>
                             <constraint firstAttribute="trailing" secondItem="dgD-G3-KYS" secondAttribute="trailing" id="Mrh-hP-pHc"/>
                             <constraint firstItem="dgD-G3-KYS" firstAttribute="top" secondItem="cEd-9n-DQl" secondAttribute="top" id="f9l-pK-FXk"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="gSu-Os-RLy" secondAttribute="trailing" constant="-16" id="jtI-iA-c6o"/>
+                            <constraint firstItem="gSu-Os-RLy" firstAttribute="leading" secondItem="cEd-9n-DQl" secondAttribute="leadingMargin" constant="-16" id="nkA-nl-j3X"/>
                             <constraint firstItem="OxK-3X-IAk" firstAttribute="top" secondItem="dgD-G3-KYS" secondAttribute="bottom" id="y0Z-lZ-YlY"/>
                             <constraint firstItem="dgD-G3-KYS" firstAttribute="leading" secondItem="cEd-9n-DQl" secondAttribute="leading" id="z4g-Xu-j9F"/>
                         </constraints>

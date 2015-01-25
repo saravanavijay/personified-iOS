@@ -286,4 +286,59 @@ static NSString* const WaterfallHeaderIdentifier = @"WaterfallHeader";
 }
 
 
+- (IBAction)recommendClick:(id)sender {
+    PFQuery *query = [PFUser query];
+    PFRelation *relation = [[PFUser currentUser] relationForKey:@"facebookFriends"];
+    [query whereKey:@"objectId" equalTo:[PFUser currentUser].objectId];
+    //[query includeKey:@"facebookFriends"];
+    [query setLimit:1000];
+    
+    
+    [[relation query] findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        for (PFUser *user in objects) {
+            
+            
+            
+            
+            // get the PFUser object for friend
+            PFQuery *userQuery=[PFUser query];
+            [userQuery whereKey:@"objectId" equalTo:user.objectId];
+            //here ClientFBId is facebook id of receiver to whom Push Notification is sent
+            
+            // send push notification to the user
+            PFQuery *pushQuery = [PFInstallation query];
+            [pushQuery whereKey:@"owner" matchesQuery:userQuery];
+            PFPush *push = [PFPush new];
+            [push setQuery: pushQuery];
+            NSString *message=[[@"Vijay" stringByAppendingString:@" "]stringByAppendingString:@"sent you ilu"];
+            
+            NSDictionary *data = [NSDictionary dictionaryWithObjectsAndKeys:
+                                  message, @"alert",
+                                  @"Increment", @"badge",
+                                  @"cheering.caf", @"sound",
+                                  nil];
+            
+            [PFPush sendPushDataToQuery:pushQuery withData:data error:nil];
+            
+            
+            
+          //  PFQuery *query = [PFUser query];
+//            [query whereKey:@"objectId" equalTo:user.objectId];
+//            
+//            PFQuery *queryInstallation = [PFInstallation query];
+//            [queryInstallation whereKey:@"owner" matchesKey:@"user" inQuery:query];
+//            
+//            PFPush *push = [[PFPush alloc] init];
+//            [push setQuery:queryInstallation];
+//            [push setMessage:@"Muthu asks for recommendation"];
+//            [push sendPushInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
+//             {
+//                 if (error != nil)
+//                 {
+//                     NSLog(@"SendPushNotification send error.");
+//                 }
+//             }];
+        }
+    }];
+}
 @end
