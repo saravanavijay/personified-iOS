@@ -15,5 +15,6 @@
 @property (weak, nonatomic) IBOutlet UITextField *mTextField;
 
 @property (nonatomic) XDPopupListView *mTextDropDownListView;
+- (IBAction)askClick:(id)sender;
 
 @end

@@ -8,9 +8,13 @@
 
 #import "RecommendViewController.h"
 #import "NSString+Utils.h"
+#import "ASAPIClient.h"
+#import <Parse/Parse.h>
 
-@interface RecommendViewController (){
+@interface RecommendViewController ()<UIAlertViewDelegate>
+{
     NSMutableArray *mContentList;
+    ASAPIClient *apiClient;
 }
 
 @end
@@ -26,8 +30,11 @@
     
     [mTextField addTarget:self action:@selector(textDidChanged:) forControlEvents:UIControlEventEditingChanged];
     mContentList = [[NSMutableArray alloc] initWithCapacity:0];
+    [[self navigationController] setNavigationBarHidden:YES animated:YES];
     
-    
+    apiClient = [ASAPIClient apiClientWithApplicationID:@"1PDXU6Z52T" apiKey:@"3f3fc520881c2c34364fdf208a2c82fb"];
+
+    [mTextField becomeFirstResponder];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -84,28 +91,60 @@
 {
     UITextField *textField = (UITextField *)sender;
     if (![NSString isNullOrEmpty:textField.text]) {
-        
         [self createLisDatatByStr:textField.text];
-        
-        [mTextDropDownListView show];
-        [mTextDropDownListView reloadListData];
     }
     
 }
 
 - (void)createLisDatatByStr:(NSString *)str
 {
-    [mContentList removeAllObjects];
+    ASRemoteIndex *index = [apiClient getIndex:@"userFeed"];
+    
     if ([NSString isNullOrEmpty:str]) {
-        str = @"Fck";
+        str = @"iPhone";
     }
-    for (int i = 0; i < 50; i++) {
-        [mContentList addObject:[NSString stringWithFormat:@"%@_%d", str, i]];
+    else
+    {
+        
     }
+    
+    [index search:[ASQuery queryWithFullTextQuery:str] success:^(ASRemoteIndex *index, ASQuery *query, NSDictionary *answer) {
+        NSLog(@"answer = %@", answer);
+        if (answer.count>0) {
+            [mContentList removeAllObjects];
+            for (NSDictionary* hit  in answer[@"hits"]) {
+                [mContentList addObject:hit[@"feedName"]];
+            }
+            [mTextDropDownListView show];
+            [mTextDropDownListView reloadListData];
+        }
+    }
+    failure:nil];
 }
 
 
 - (IBAction)CloseAction:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+- (IBAction)askClick:(id)sender {
+    
+    if (![NSString isNullOrEmpty:mTextField.text]) {
+        PFObject* recommendation = [PFObject objectWithClassName:@"Recommendation"];
+        recommendation[@"userId"] = [PFUser currentUser];
+        recommendation[@"recommendationFor"] = mTextField.text;
+//        [recommendation addObject:[PFUser currentUser] forKey:@"userId"];
+//        [recommendation addObject:mTextField.text forKey:@"recommendationFor"];
+        [recommendation saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            if (succeeded) {
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"We have asked for recommendation. Please wait for reply from our Users."  message:nil delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+                [alert show];
+            }
+        }];
+    }
+}
+
+-(void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 @end
+
