@@ -10,6 +10,7 @@
 #import "AskedRecommendTableViewCell.h"
 #import "ECSlidingViewController.h"
 #import <Parse/Parse.h>
+#import "ViewAnswerViewController.h"
 
 @interface AskedRecommendViewController ()
 
@@ -127,7 +128,10 @@
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"called");
+    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+    ViewAnswerViewController *answerView = [sb instantiateViewControllerWithIdentifier:@"ViewAnswerViewController"];
+    
+        [self.navigationController pushViewController:answerView animated:YES];
     
 }
 @end
