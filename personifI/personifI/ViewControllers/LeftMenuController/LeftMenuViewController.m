@@ -9,7 +9,8 @@
 #import "LeftMenuViewController.h"
 #import "ECSlidingViewController.h"
 #import "FeedViewController.h"
-#import "TakepicViewController.h"
+#import "AskedRecommendViewController.h"
+#import "YourRecommendationViewController.h"
 
 @interface LeftMenuViewController ()
 
@@ -33,7 +34,7 @@
     self.navigationItem.leftBarButtonItem = btnNext;
     
     
-     _itemsArray = [[NSMutableArray alloc]initWithObjects:@"Feed",@"Share",@"Settings",@"Notifications",nil];
+     _itemsArray = [[NSMutableArray alloc]initWithObjects:@"Feed",@"Asked Recommendation",@"Your Recommendation",nil];
     
     _leftMenuTableView.delegate=self;
     _leftMenuTableView.dataSource=self;
@@ -102,21 +103,42 @@
     }
     if (indexPath.row==1){
         
-//        UIStoryboard *sb=[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle  mainBundle]];
-//        
-//        TakepicViewController * takePic=[sb instantiateViewControllerWithIdentifier:@"TakeapicNav" ];
-//        
-//    
-//        
-//        
-//        [self.slidingViewController anchorTopViewOffScreenTo:ECRight animations:nil onComplete:^{
-//            CGRect frame = self.slidingViewController.topViewController.view.frame;
-//            self.slidingViewController.topViewController = takePic;
-//            self.slidingViewController.topViewController.view.frame = frame;
-//            [self.slidingViewController resetTopView];
-//            
-//            
-//        }];
+        UIStoryboard *sb=[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle  mainBundle]];
+        
+        AskedRecommendViewController * takePic=[sb instantiateViewControllerWithIdentifier:@"Askednav" ];
+        
+    
+        
+        
+        [self.slidingViewController anchorTopViewOffScreenTo:ECRight animations:nil onComplete:^{
+            CGRect frame = self.slidingViewController.topViewController.view.frame;
+            self.slidingViewController.topViewController = takePic;
+            self.slidingViewController.topViewController.view.frame = frame;
+            [self.slidingViewController resetTopView];
+            
+            
+        }];
+    
+        
+    }
+    
+    if (indexPath.row==2){
+        
+        UIStoryboard *sb=[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle  mainBundle]];
+        
+        YourRecommendationViewController * takePic=[sb instantiateViewControllerWithIdentifier:@"yourRecNav" ];
+        
+        
+        
+        
+        [self.slidingViewController anchorTopViewOffScreenTo:ECRight animations:nil onComplete:^{
+            CGRect frame = self.slidingViewController.topViewController.view.frame;
+            self.slidingViewController.topViewController = takePic;
+            self.slidingViewController.topViewController.view.frame = frame;
+            [self.slidingViewController resetTopView];
+            
+            
+        }];
         
         
     }
