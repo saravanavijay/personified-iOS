@@ -165,26 +165,21 @@
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Jq-0z-lyt">
-                                                    <rect key="frame" x="8" y="137" width="67" height="30"/>
+                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Moe-lF-ZHw">
+                                                    <rect key="frame" x="168" y="143" width="30" height="24"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="30" id="DQO-gP-baf"/>
-                                                    </constraints>
-                                                    <state key="normal" title="Like">
-                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                    </state>
-                                                    <connections>
-                                                        <action selector="likeClick:" destination="vMx-xW-Rzk" eventType="touchUpInside" id="4gy-EZ-HGw"/>
-                                                    </connections>
-                                                </button>
-                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Moe-lF-ZHw">
-                                                    <rect key="frame" x="136" y="137" width="62" height="30"/>
-                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="24" id="7uu-36-yVy"/>
+                                                        <constraint firstAttribute="width" constant="30" id="9om-jJ-4sl"/>
                                                         <constraint firstAttribute="height" constant="20" id="k5g-q5-Xkw"/>
                                                     </constraints>
-                                                    <state key="normal" title="Share">
+                                                    <state key="normal" image="btnShare">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="k5g-q5-Xkw"/>
+                                                        </mask>
+                                                    </variation>
                                                     <connections>
                                                         <action selector="shareClick:" destination="vMx-xW-Rzk" eventType="touchUpInside" id="zbm-vk-k1Y"/>
                                                     </connections>
@@ -196,6 +191,20 @@
                                                         <constraint firstAttribute="height" constant="50" id="u19-Q2-0gG"/>
                                                     </constraints>
                                                 </imageView>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Jq-0z-lyt">
+                                                    <rect key="frame" x="4" y="144" width="32" height="27"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="27" id="2ax-oC-fI1"/>
+                                                        <constraint firstAttribute="width" constant="32" id="dTS-7w-dc0"/>
+                                                    </constraints>
+                                                    <state key="normal" image="btnLikeOff">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <state key="selected" image="btnLikeOn"/>
+                                                    <connections>
+                                                        <action selector="likeClick:" destination="vMx-xW-Rzk" eventType="touchUpInside" id="4gy-EZ-HGw"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
@@ -205,24 +214,34 @@
                                             <constraint firstAttribute="bottom" secondItem="3gu-HR-r34" secondAttribute="bottom" id="2w2-7g-FII"/>
                                             <constraint firstItem="j0n-R2-URz" firstAttribute="top" secondItem="hrJ-ZU-3w2" secondAttribute="bottom" constant="4" id="62C-SA-aXC"/>
                                             <constraint firstItem="hrJ-ZU-3w2" firstAttribute="trailing" secondItem="vMx-xW-Rzk" secondAttribute="trailingMargin" id="6jD-Be-HHL"/>
+                                            <constraint firstItem="Moe-lF-ZHw" firstAttribute="bottom" secondItem="vMx-xW-Rzk" secondAttribute="bottomMargin" id="ALM-r2-OrV"/>
                                             <constraint firstItem="8Jq-0z-lyt" firstAttribute="leading" secondItem="vMx-xW-Rzk" secondAttribute="leadingMargin" id="B0I-Ho-lml"/>
                                             <constraint firstItem="hrJ-ZU-3w2" firstAttribute="leading" secondItem="vMx-xW-Rzk" secondAttribute="leadingMargin" id="GJ0-by-2gD"/>
+                                            <constraint firstAttribute="bottom" secondItem="8Jq-0z-lyt" secondAttribute="bottom" constant="2" id="J73-jn-sob"/>
                                             <constraint firstItem="Ho5-2n-8Sd" firstAttribute="leading" secondItem="vMx-xW-Rzk" secondAttribute="leadingMargin" constant="-8" id="Mg1-W5-XFU"/>
+                                            <constraint firstAttribute="bottom" secondItem="8Jq-0z-lyt" secondAttribute="bottom" constant="4" id="Mof-OW-tyN"/>
                                             <constraint firstAttribute="trailingMargin" secondItem="Ho5-2n-8Sd" secondAttribute="trailing" constant="-8" id="OTV-7G-dHi"/>
                                             <constraint firstItem="Moe-lF-ZHw" firstAttribute="trailing" secondItem="vMx-xW-Rzk" secondAttribute="trailingMargin" id="Tp1-Xi-yqM"/>
                                             <constraint firstItem="Ho5-2n-8Sd" firstAttribute="top" secondItem="vMx-xW-Rzk" secondAttribute="topMargin" constant="-8" id="VmM-4t-3d6"/>
+                                            <constraint firstItem="8Jq-0z-lyt" firstAttribute="leading" secondItem="vMx-xW-Rzk" secondAttribute="leading" constant="4" id="csa-dw-7lH"/>
                                             <constraint firstItem="Moe-lF-ZHw" firstAttribute="bottom" secondItem="vMx-xW-Rzk" secondAttribute="bottomMargin" id="eT3-ns-GNG"/>
                                             <constraint firstItem="3gu-HR-r34" firstAttribute="leading" secondItem="vMx-xW-Rzk" secondAttribute="leading" id="fcc-31-EKQ"/>
                                             <constraint firstAttribute="centerX" secondItem="j0n-R2-URz" secondAttribute="centerX" id="ilO-N4-QS0"/>
                                             <constraint firstItem="8Jq-0z-lyt" firstAttribute="bottom" secondItem="vMx-xW-Rzk" secondAttribute="bottomMargin" id="ple-JJ-BXk"/>
                                             <constraint firstItem="3gu-HR-r34" firstAttribute="top" secondItem="vMx-xW-Rzk" secondAttribute="top" id="qeW-o8-GOA"/>
                                             <constraint firstItem="hrJ-ZU-3w2" firstAttribute="top" secondItem="vMx-xW-Rzk" secondAttribute="topMargin" constant="-8" id="s3h-vd-ani"/>
+                                            <constraint firstAttribute="bottom" secondItem="Moe-lF-ZHw" secondAttribute="bottom" constant="2" id="w4e-vB-vh0"/>
                                             <constraint firstItem="j0n-R2-URz" firstAttribute="top" secondItem="hrJ-ZU-3w2" secondAttribute="bottom" id="xZx-I7-QEU"/>
                                         </constraints>
                                         <size key="customSize" width="206" height="175"/>
                                         <variation key="default">
                                             <mask key="constraints">
                                                 <exclude reference="xZx-I7-QEU"/>
+                                                <exclude reference="B0I-Ho-lml"/>
+                                                <exclude reference="J73-jn-sob"/>
+                                                <exclude reference="ple-JJ-BXk"/>
+                                                <exclude reference="ALM-r2-OrV"/>
+                                                <exclude reference="eT3-ns-GNG"/>
                                             </mask>
                                         </variation>
                                         <connections>
@@ -471,6 +490,9 @@
         <image name="Facebook Login.png" width="273" height="42"/>
         <image name="Follow.png" width="74" height="29"/>
         <image name="Following.png" width="74" height="29"/>
+        <image name="btnLikeOff" width="42" height="33"/>
+        <image name="btnLikeOn" width="42" height="33"/>
+        <image name="btnShare" width="37" height="29"/>
         <image name="cameraImage.jpg" width="273" height="232"/>
         <image name="likeImg" width="273" height="255"/>
     </resources>

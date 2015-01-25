@@ -31,6 +31,7 @@
 }
 
 - (IBAction)likeClick:(id)sender {
+    self.btnLike.selected = YES;
 }
 - (IBAction)shareClick:(id)sender {
 }
