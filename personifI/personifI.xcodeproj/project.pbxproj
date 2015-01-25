@@ -62,6 +62,9 @@
 		99BAA98F1A74CABF00F566C1 /* VotesIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 99BAA98E1A74CABF00F566C1 /* VotesIcon@2x.png */; };
 		99BAA9911A74CB4B00F566C1 /* simpleTick@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 99BAA9901A74CB4B00F566C1 /* simpleTick@2x.png */; };
 		99BAA9941A74CC6900F566C1 /* AskedRecommendTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 99BAA9931A74CC6900F566C1 /* AskedRecommendTableViewCell.m */; };
+		99BAA9971A74F1F300F566C1 /* ViewAnswerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 99BAA9961A74F1F300F566C1 /* ViewAnswerViewController.m */; };
+		99BAA99A1A74F27700F566C1 /* ViewAnswerTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 99BAA9991A74F27700F566C1 /* ViewAnswerTableViewCell.m */; };
+		99BAA99D1A74F41B00F566C1 /* yourAnswerTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 99BAA99C1A74F41B00F566C1 /* yourAnswerTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -154,6 +157,12 @@
 		99BAA9901A74CB4B00F566C1 /* simpleTick@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "simpleTick@2x.png"; sourceTree = "<group>"; };
 		99BAA9921A74CC6900F566C1 /* AskedRecommendTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AskedRecommendTableViewCell.h; sourceTree = "<group>"; };
 		99BAA9931A74CC6900F566C1 /* AskedRecommendTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AskedRecommendTableViewCell.m; sourceTree = "<group>"; };
+		99BAA9951A74F1F300F566C1 /* ViewAnswerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewAnswerViewController.h; sourceTree = "<group>"; };
+		99BAA9961A74F1F300F566C1 /* ViewAnswerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewAnswerViewController.m; sourceTree = "<group>"; };
+		99BAA9981A74F27700F566C1 /* ViewAnswerTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewAnswerTableViewCell.h; sourceTree = "<group>"; };
+		99BAA9991A74F27700F566C1 /* ViewAnswerTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewAnswerTableViewCell.m; sourceTree = "<group>"; };
+		99BAA99B1A74F41B00F566C1 /* yourAnswerTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = yourAnswerTableViewCell.h; sourceTree = "<group>"; };
+		99BAA99C1A74F41B00F566C1 /* yourAnswerTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = yourAnswerTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -374,6 +383,10 @@
 				996BD6821A73C89200CE4337 /* InterestTableViewCell.m */,
 				99BAA9921A74CC6900F566C1 /* AskedRecommendTableViewCell.h */,
 				99BAA9931A74CC6900F566C1 /* AskedRecommendTableViewCell.m */,
+				99BAA9981A74F27700F566C1 /* ViewAnswerTableViewCell.h */,
+				99BAA9991A74F27700F566C1 /* ViewAnswerTableViewCell.m */,
+				99BAA99B1A74F41B00F566C1 /* yourAnswerTableViewCell.h */,
+				99BAA99C1A74F41B00F566C1 /* yourAnswerTableViewCell.m */,
 			);
 			path = Customcells;
 			sourceTree = "<group>";
@@ -439,6 +452,8 @@
 			children = (
 				99BAA9881A74C8B600F566C1 /* AskedRecommendViewController.h */,
 				99BAA9891A74C8B600F566C1 /* AskedRecommendViewController.m */,
+				99BAA9951A74F1F300F566C1 /* ViewAnswerViewController.h */,
+				99BAA9961A74F1F300F566C1 /* ViewAnswerViewController.m */,
 			);
 			path = AskedRecommendation;
 			sourceTree = "<group>";
@@ -607,6 +622,7 @@
 			files = (
 				996BD67F1A73C88700CE4337 /* InterestsViewController.m in Sources */,
 				99BAA9941A74CC6900F566C1 /* AskedRecommendTableViewCell.m in Sources */,
+				99BAA99A1A74F27700F566C1 /* ViewAnswerTableViewCell.m in Sources */,
 				987966071A73892A0088D162 /* ViewController.m in Sources */,
 				987966041A73892A0088D162 /* AppDelegate.m in Sources */,
 				987966271A73B3280088D162 /* Utilities.m in Sources */,
@@ -617,12 +633,14 @@
 				99BAA98D1A74C8D100F566C1 /* YourRecommendationViewController.m in Sources */,
 				996BD68B1A73CA0800CE4337 /* LeftMenuViewController.m in Sources */,
 				996BD6AF1A73E39300CE4337 /* TakepicViewController.m in Sources */,
+				99BAA99D1A74F41B00F566C1 /* yourAnswerTableViewCell.m in Sources */,
 				99BAA98A1A74C8B600F566C1 /* AskedRecommendViewController.m in Sources */,
 				996BD6921A73CA4600CE4337 /* ECSlidingViewController.m in Sources */,
 				99BAA9851A74C28C00F566C1 /* RecommendViewController.m in Sources */,
 				996BD68A1A73CA0800CE4337 /* FeedViewController.m in Sources */,
 				996BD6831A73C89200CE4337 /* InterestTableViewCell.m in Sources */,
 				987966321A740B9F0088D162 /* FRGWaterfallCollectionViewLayout.m in Sources */,
+				99BAA9971A74F1F300F566C1 /* ViewAnswerViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

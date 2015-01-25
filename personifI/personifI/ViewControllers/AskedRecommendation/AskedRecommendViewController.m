@@ -21,6 +21,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    _askedrecommendarray=[[NSMutableArray alloc]init];
+    
     UIButton *btnNext1 =[[UIButton alloc] init];
     [btnNext1 setBackgroundImage:[UIImage imageNamed:@"FeedSettings"] forState:UIControlStateNormal];
     
@@ -35,14 +37,54 @@
     
     
     
-    PFQuery *askedRecommend = [PFQuery queryWithClassName:@"User"];
-    [askedRecommend whereKey:@"userId" equalTo:[PFUser currentUser].objectId];
-    [askedRecommend includeKey:@"ReccomendationAnswers"];
-   // [askedRecommend setLimit:1000];
-    [askedRecommend findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        NSLog(@"%@",objects);
+    PFQuery *askedRecommend = [PFQuery queryWithClassName:@"Recommendation"];
+    
+    PFQuery * query = [PFUser query];
+    //[query whereKey:@"objectId" equalTo:@"fnlBpPtjQt"];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        [askedRecommend whereKey:@"userId" equalTo:objects[0]];    //fnlBpPtjQt
+        //  [askedRecommend whereKey:@"userId" equalTo:[PFUser currentUser].objectId];
+        //[askedRecommend includeKey:@"recommendationAnswers"];
+        [askedRecommend setLimit:1000];
+        [askedRecommend findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+            NSLog(@"Objects: %@",objects);
+            
+            for (NSDictionary* dict in objects) {
+            
+                [_askedrecommendarray addObject:[dict objectForKey:@"recommendationFor"]];
+                
+                 NSLog(@"_askedarray %@",_askedrecommendarray);
+                
+                
+                
+            
+            }
+            [self getanswers];
+            
+            _askedRecommendTableView.delegate=self;
+            _askedRecommendTableView.dataSource=self;
+            [_askedRecommendTableView reloadData];
+            
+        }];
     }];
-
+    
+    
+    NSLog(@"_askedarray %@",_askedrecommendarray);
+    
+    
+}
+-(void) getanswers{
+    
+    PFQuery *query = [PFQuery queryWithClassName:@"RecommendationAnswers"];
+   // [query whereKey:@"objectId" equalTo:[PFUser currentUser].objectId];
+    [query includeKey:@"recommendationQuestionId"];
+    [query setLimit:1000];
+    
+    
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        NSLog(@"query = %@",objects);
+    }];
+    
     
     
 }
@@ -70,17 +112,22 @@
 */
 - (NSInteger)tableView:(UITableView*)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 2;
+    return _askedrecommendarray.count;
 }
 
 - (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     AskedRecommendTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AskRecCell" forIndexPath:indexPath];
     
-    
+    cell.askedRecLabel.text=[_askedrecommendarray objectAtIndex:indexPath.row];
     
     return cell;
     
 
+}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSLog(@"called");
+    
 }
 @end

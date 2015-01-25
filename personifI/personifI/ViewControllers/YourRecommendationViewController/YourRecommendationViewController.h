@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface YourRecommendationViewController : UIViewController
+@interface YourRecommendationViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>
+@property (strong, nonatomic) IBOutlet UITableView *yourRecTableView;
 
 @end
