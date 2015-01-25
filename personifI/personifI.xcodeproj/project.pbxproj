@@ -21,6 +21,8 @@
 		987966331A740B9F0088D162 /* FRGWaterfallDecorationReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9879662E1A740B9F0088D162 /* FRGWaterfallDecorationReusableView.m */; };
 		9879663B1A7436E30088D162 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 987966391A7436E30088D162 /* Parse.framework */; };
 		9879663C1A7436E30088D162 /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9879663A1A7436E30088D162 /* ParseFacebookUtils.framework */; };
+		987966401A74D2CE0088D162 /* XDPopupListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9879663F1A74D2CE0088D162 /* XDPopupListView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		987966431A74D3A60088D162 /* NSString+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 987966421A74D3A60088D162 /* NSString+Utils.m */; };
 		996BD65A1A738BD300CE4337 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 996BD6591A738BD300CE4337 /* FacebookSDK.framework */; };
 		996BD65E1A738D6200CE4337 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 996BD65D1A738D6200CE4337 /* AudioToolbox.framework */; };
 		996BD6601A738D6B00CE4337 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 996BD65F1A738D6B00CE4337 /* CFNetwork.framework */; };
@@ -96,6 +98,10 @@
 		9879662E1A740B9F0088D162 /* FRGWaterfallDecorationReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FRGWaterfallDecorationReusableView.m; sourceTree = "<group>"; };
 		987966391A7436E30088D162 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		9879663A1A7436E30088D162 /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtils.framework; sourceTree = "<group>"; };
+		9879663E1A74D2CE0088D162 /* XDPopupListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDPopupListView.h; sourceTree = "<group>"; };
+		9879663F1A74D2CE0088D162 /* XDPopupListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDPopupListView.m; sourceTree = "<group>"; };
+		987966411A74D3A60088D162 /* NSString+Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Utils.h"; sourceTree = "<group>"; };
+		987966421A74D3A60088D162 /* NSString+Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Utils.m"; sourceTree = "<group>"; };
 		996BD6591A738BD300CE4337 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		996BD65D1A738D6200CE4337 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		996BD65F1A738D6B00CE4337 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -268,6 +274,8 @@
 		987966241A73B30F0088D162 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				987966411A74D3A60088D162 /* NSString+Utils.h */,
+				987966421A74D3A60088D162 /* NSString+Utils.m */,
 				987966251A73B3280088D162 /* Utilities.h */,
 				987966261A73B3280088D162 /* Utilities.m */,
 			);
@@ -285,6 +293,15 @@
 				9879662E1A740B9F0088D162 /* FRGWaterfallDecorationReusableView.m */,
 			);
 			name = CollectionView;
+			sourceTree = "<group>";
+		};
+		9879663D1A74D2CE0088D162 /* XDPopupListView */ = {
+			isa = PBXGroup;
+			children = (
+				9879663E1A74D2CE0088D162 /* XDPopupListView.h */,
+				9879663F1A74D2CE0088D162 /* XDPopupListView.m */,
+			);
+			path = XDPopupListView;
 			sourceTree = "<group>";
 		};
 		996BD6581A738BC200CE4337 /* FrameWorks */ = {
@@ -380,6 +397,7 @@
 		996BD68C1A73CA4600CE4337 /* ThirdpartyClasses */ = {
 			isa = PBXGroup;
 			children = (
+				9879663D1A74D2CE0088D162 /* XDPopupListView */,
 				987966281A740B890088D162 /* CollectionView */,
 				996BD68D1A73CA4600CE4337 /* EcSliding */,
 			);
@@ -569,6 +587,8 @@
 				996BD67F1A73C88700CE4337 /* InterestsViewController.m in Sources */,
 				987966071A73892A0088D162 /* ViewController.m in Sources */,
 				987966041A73892A0088D162 /* AppDelegate.m in Sources */,
+				987966401A74D2CE0088D162 /* XDPopupListView.m in Sources */,
+				987966431A74D3A60088D162 /* NSString+Utils.m in Sources */,
 				987966271A73B3280088D162 /* Utilities.m in Sources */,
 				996BD6931A73CA4600CE4337 /* UIImage+ImageWithUIView.m in Sources */,
 				987966011A73892A0088D162 /* main.m in Sources */,

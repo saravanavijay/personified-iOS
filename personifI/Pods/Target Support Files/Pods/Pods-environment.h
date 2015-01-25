@@ -48,3 +48,9 @@
 #define COCOAPODS_VERSION_MINOR_AFNetworking_UIKit 5
 #define COCOAPODS_VERSION_PATCH_AFNetworking_UIKit 0
 
+// AlgoliaSearch-Client
+#define COCOAPODS_POD_AVAILABLE_AlgoliaSearch_Client
+#define COCOAPODS_VERSION_MAJOR_AlgoliaSearch_Client 3
+#define COCOAPODS_VERSION_MINOR_AlgoliaSearch_Client 2
+#define COCOAPODS_VERSION_PATCH_AlgoliaSearch_Client 0
+

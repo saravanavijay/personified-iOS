@@ -7,8 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "XDPopupListView.h"
 
-@interface RecommendViewController : UIViewController
+@interface RecommendViewController : UIViewController<UITextFieldDelegate, XDPopupListViewDataSource, XDPopupListViewDelegate>
 - (IBAction)CloseAction:(id)sender;
+
+@property (weak, nonatomic) IBOutlet UITextField *mTextField;
+
+@property (nonatomic) XDPopupListView *mTextDropDownListView;
 
 @end
