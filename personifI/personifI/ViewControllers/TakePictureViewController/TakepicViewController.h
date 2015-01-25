@@ -33,4 +33,5 @@
 @property (strong, nonatomic) IBOutlet UILabel *aboutLabel;
 @property (strong, nonatomic) NSString *Selectedtypetext;
 
+- (IBAction)cancelClick:(id)sender;
 @end

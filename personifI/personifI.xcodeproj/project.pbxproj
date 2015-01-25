@@ -453,11 +453,11 @@
 				TargetAttributes = {
 					987965FA1A73892A0088D162 = {
 						CreatedOnToolsVersion = 6.1.1;
-						DevelopmentTeam = 5PXSW8S5E4;
+						DevelopmentTeam = KD5V7696DN;
 					};
 					987966131A73892A0088D162 = {
 						CreatedOnToolsVersion = 6.1.1;
-						DevelopmentTeam = 5PXSW8S5E4;
+						DevelopmentTeam = KD5V7696DN;
 						TestTargetID = 987965FA1A73892A0088D162;
 					};
 				};
@@ -689,8 +689,8 @@
 			baseConfigurationReference = 050D6B88D56803C475BFEDED /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Saravana Vijay Amirthalingam (VQK355ET55)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Saravana Vijay Amirthalingam (VQK355ET55)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/personifI/FrameWorks",
@@ -708,8 +708,8 @@
 			baseConfigurationReference = 4A375D9FDBF43568911A406D /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Saravana Vijay Amirthalingam (VQK355ET55)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Saravana Vijay Amirthalingam (VQK355ET55)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/personifI/FrameWorks",
@@ -726,6 +726,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -745,6 +746,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",

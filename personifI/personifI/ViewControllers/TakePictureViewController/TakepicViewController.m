@@ -34,17 +34,6 @@
     
 //    Typearray=[[NSMutableArray alloc]initWithObjects:@"Interest",@"Own",@"Link", nil];
     
-    
-    
-   // _typetextField.enabled=NO;
-    UITapGestureRecognizer *tapGestureRecognizer2 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(typetextFieldTapped)];
-    tapGestureRecognizer2.numberOfTapsRequired = 1;
-    [_selecttypeLabal addGestureRecognizer:tapGestureRecognizer2];
-    _selecttypeLabal.userInteractionEnabled = YES;
-    
-    
-    
-    
     _FieldName.delegate=self;
 }
 
@@ -125,7 +114,7 @@
 //    userPhoto[@"Image"] = imageFile;
 //    [userPhoto saveInBackground];
 
-
+    
 
     [picker dismissViewControllerAnimated:YES completion:NULL];
 
@@ -141,17 +130,20 @@
     
     if (!fieldNameText.length == 0 || !fieldNameText==nil){
     
-    _FieldName.hidden=YES;
-    _aboutLabel.hidden=YES;
-    
-    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
-    picker.delegate = self;
-    picker.allowsEditing = YES;
-    picker.sourceType = UIImagePickerControllerSourceTypeCamera;
-    
-    [self presentViewController:picker animated:YES completion:NULL];
-    
-    
+        _FieldName.hidden=YES;
+        _aboutLabel.hidden=YES;
+        
+        UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+        picker.delegate = self;
+        picker.allowsEditing = YES;
+        picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+        
+        [self presentViewController:picker animated:YES completion:NULL];
+    }
+    else
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Enter what it's about"  message:nil delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+        [alert show];
     }
     
     
@@ -185,7 +177,7 @@
         _FieldName.hidden=NO;
         _aboutLabel.hidden=NO;
         
-        
+        [self dismissViewControllerAnimated:YES completion:nil];
         
         
         return NO;
@@ -196,13 +188,9 @@
 
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
-    
-
-    
     if ([textField canResignFirstResponder]) {
         [textField resignFirstResponder];
     }
-    
     return YES;
 }
 
@@ -215,16 +203,8 @@
 
 - (BOOL) textViewShouldBeginEditing:(UITextView *)textView
 {
-    
-    
-    
-    
-    
     textView.textColor=[UIColor whiteColor];
-    
-    
     return YES;
-    
 }
 
 //-(void) textViewDidChange:(UITextView *)textView
@@ -242,4 +222,7 @@
 
 
 
+- (IBAction)cancelClick:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 @end
