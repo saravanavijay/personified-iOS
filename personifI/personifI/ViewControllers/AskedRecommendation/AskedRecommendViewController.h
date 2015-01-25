@@ -10,5 +10,6 @@
 
 @interface AskedRecommendViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
 @property (strong, nonatomic) IBOutlet UITableView *askedRecommendTableView;
+@property(strong,nonatomic) NSMutableArray* askedrecommendarray;
 
 @end

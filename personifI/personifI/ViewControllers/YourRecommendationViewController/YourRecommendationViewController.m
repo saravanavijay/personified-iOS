@@ -8,6 +8,7 @@
 
 #import "YourRecommendationViewController.h"
 #import "ECSlidingViewController.h"
+#import "yourAnswerTableViewCell.h"
 
 @interface YourRecommendationViewController ()
 
@@ -56,5 +57,21 @@
     // Pass the selected object to the new view controller.
 }
 */
+- (NSInteger)tableView:(UITableView*)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 1;
+}
+
+- (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+  
+     yourAnswerTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"yourcell" forIndexPath:indexPath];
+    ;
+    
+    return cell;
+    
+    
+}
+
 
 @end
