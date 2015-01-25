@@ -32,7 +32,7 @@
     UIImageView *titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Logo"]];
     [self.navigationController.navigationBar.topItem setTitleView:titleView];
     
-    Typearray=[[NSMutableArray alloc]initWithObjects:@"Interest",@"Own",@"Link", nil];
+//    Typearray=[[NSMutableArray alloc]initWithObjects:@"Interest",@"Own",@"Link", nil];
     
     
     
@@ -52,35 +52,7 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
--(void)typetextFieldTapped{
-    CGRect screenRect = [[UIScreen mainScreen] bounds];
-    CGFloat screenWidth = screenRect.size.width;
-    CGFloat screenHeight = screenRect.size.height;
-    pickerView = [[UIPickerView alloc] initWithFrame:CGRectMake(0, screenHeight/2 +65 , screenWidth, screenHeight/2-25)];
-    pickerView.delegate = self;
-    pickerView.tag=100;
-    pickerView.dataSource = self;
-    pickerView.showsSelectionIndicator = YES;
-    pickerView.opaque = NO;
-    pickerView.backgroundColor=[UIColor whiteColor];
-    [self.view addSubview:pickerView];
-    
-    
-   
-    
-    
-    
-    toolBar= [[UIToolbar alloc] initWithFrame:CGRectMake(0,pickerView.frame.origin.y -44,320,44)];
-    // toolBar.exclusiveTouch=YES;
-    [toolBar setBarStyle:UIBarStyleBlack];
-    UIBarButtonItem *barButtonDone = [[UIBarButtonItem alloc] initWithTitle:@"Done"
-                                                                      style:UIBarButtonItemStylePlain target:self action:@selector(changeregion:)];
-    
-    [toolBar setItems:@[barButtonDone] animated:NO];
-    
-    [self.view addSubview:toolBar];
-    
-}
+
 
     
     
@@ -202,7 +174,7 @@
             userPhoto[@"feedDescription"] = userEnteredText;
         
              userPhoto[@"feedName"]=fieldNameText;
-        userPhoto[@"feedType"]=Selectedtypetext;
+        userPhoto[@"feedType"]=_Selectedtypetext;
             userPhoto[@"feedImage"] = imageFile;
         PFUser * User=[PFUser currentUser];
         userPhoto[@"userId"]=User;
@@ -264,56 +236,6 @@
 //        [userinputtext resignFirstResponder];
 //    }
 //}
-- (void)pickerView:(UIPickerView *)pickerViews didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
-    
-    if (pickerView.tag==100)
-    {
-       
-        Selectedtypetext=[Typearray  objectAtIndex:[pickerView selectedRowInComponent:0]];
-        NSLog(@"%@", Selectedtypetext);
-    }
-   
-    
-    
-    
-}
--(void)changeregion:(id)sender
-{
-    
-    
-    _selecttypeLabal.text=Selectedtypetext;
-
-    [toolBar removeFromSuperview];
-    [pickerView removeFromSuperview];
-    
-    
-    
-}
-
--(NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
-    return 1;
-}
-
--(NSInteger)pickerView:(UIPickerView *)pickerViews numberOfRowsInComponent:(NSInteger)component{
-    
-    if (pickerView.tag==100)
-        
-        return Typearray.count;
-    
-    
-    return 0;
-}
-
-
--(NSString*)pickerView:(UIPickerView *)pickerViews titleForRow:(NSInteger)row forComponent:(NSInteger)component{
-    if
-        (pickerView.tag==100)
-        return [Typearray objectAtIndex:row];
-    
-   
-    return 0;
-}
-
 
 
 
